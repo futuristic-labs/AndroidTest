@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="csapp-test-suite">
+
+    <test name="test">
+        <packages>
+            <package name="com.manusunny.tests"/>
+        </packages>
+    </test>
+
+</suite>
