@@ -18,7 +18,7 @@ public class AppiumServer extends Thread {
         try {
             if (isRunning()) {
                 String processId = getProcessId();
-                System.err.println("Appium server is already running! It will be restarted..");
+                System.out.println("Appium server is already running! Stopping it...");
 
                 ProcessBuilder builder = new ProcessBuilder("kill", "-9", processId);
                 process = builder.start();
@@ -81,12 +81,14 @@ public class AppiumServer extends Thread {
     }
 
     public void end() {
-        try {
-            process.destroyForcibly();
-            process.waitFor();
-            LOGGER.debug("Appium server stopped!");
-        } catch (InterruptedException e) {
-            LOGGER.error("Cannot stop appium server!: " + e.getMessage());
+        if(process != null){
+            try {
+                process.destroy();
+                process.waitFor();
+                LOGGER.debug("Appium server stopped!");
+            } catch (InterruptedException e) {
+                LOGGER.error("Cannot stop appium server!: " + e.getMessage());
+            }
         }
     }
 }

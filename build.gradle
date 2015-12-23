@@ -19,21 +19,30 @@ dependencies {
 }
 
 test {
+    useTestNG() {
+        suiteXmlFiles << new File('src/test/resources/testng.xml')
+    }
     testLogging.showStandardStreams = true
 }
 
-task functionalTest(type: Test) {
-    useTestNG() {
-        suiteXmlFiles << file('src/test/resources/testng.xml')
-    }
-}
 
-task removeScreenshots(type: Exec) {
+task cleanFolders(type: Exec) {
     workingDir './'
-    commandLine 'sh', './scripts/removeScreenshots.sh'
+    commandLine 'sh', './scripts/cleanFolders.sh'
 }
 
-functionalTest.dependsOn removeScreenshots
+task startBatteryStats(type: Exec) {
+    workingDir './'
+    commandLine 'sh', './scripts/startBatteryStats.sh'
+}
+
+task stopBatteryStats(type: Exec) {
+    workingDir './'
+    commandLine 'sh', './scripts/stopBatteryStats.sh'
+}
+
+test.dependsOn cleanFolders
+
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.2.1'
