@@ -1,22 +1,28 @@
 # AndroidTest
 A sample test framework template for Android
 
-Contains a sample Functional testing framework using [Appium](http://appium.io) and Battery Statistics report generator using [Battery Historian](https://github.com/google/battery-historian).
+Includes sample functional testing framework using [Appium](http://appium.io) and battery statistics report generator using [Battery Historian](https://github.com/google/battery-historian).
 
-#### Running Functional Tests
+#### Assumptions
+
+1. Appium is installed and added to path variable (use `npm install appium` otherwise)
+2. Android SDK is installed
+3. An android emulator is running or a physical device is connected
+
+#### To Run Functional Tests
 
 ````gradle
 ./gradlew clean test
 ````
 
-#### Running Functional Tests with Battery Statistics
+#### To Run Functional Tests with Battery Statistics
 
 ````gradle
 ./gradlew startBatteryStats clean test stopBatteryStats
 ````
 Reports will be generated at `'reports/battery_stats/batterystats.html'`
 
-#### Tasks
+#### Available Tasks
 
 1. `test` : Run functional tests
 2. `startBatteryStats` : Stop charging on connected device and reset battery stats
