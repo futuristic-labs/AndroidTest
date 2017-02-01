@@ -1,5 +1,5 @@
-# AndroidTest
-A sample test framework template for Android
+# TestDroid
+A sample test framework template for Android.
 
 Includes sample functional testing framework using [Appium](http://appium.io) and battery statistics report generator using [Battery Historian](https://github.com/google/battery-historian).
 
